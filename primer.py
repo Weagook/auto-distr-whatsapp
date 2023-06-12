@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import (QApplication, QWidget, QVBoxLayout, QHBoxLayout,
                             QLabel, QPushButton, QLineEdit, QTextEdit, QDateEdit,
                             QCalendarWidget, QMessageBox, QTimeEdit)
-from PyQt5.QtCore import Qt, QDate, QTime
+from PyQt5.QtCore import Qt, QDate, QTime, QDateTime
 from PyQt5.QtGui import QFont
 import json
 
@@ -117,6 +117,11 @@ class TaskWindow(QWidget):
             message_box.setIcon(QMessageBox.Information)
             message_box.setStandardButtons(QMessageBox.Ok)
             message_box.exec_()
+        datetime = QDateTime(self.selected_date['year'], self.selected_date['month'], self.selected_date['day'], self.selected_time['hour'], self.selected_time['minute'])
+        cur_datetime = QDateTime.currentDateTime()
+        print(datetime)
+        print(cur_datetime)
+        print('Разница в секундах:', cur_datetime.secsTo(datetime))
         
 
 if __name__ == "__main__":
